@@ -1,0 +1,39 @@
+﻿@model APOD.Models.NasaApod
+
+@{
+    ViewData["title"] = "GetPhoto";
+}
+
+<style>
+    #image_container
+    {
+        width: 500px; 
+        height: 500px; 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img {
+        max-width: 100%;
+        object-fit: contain;
+        
+    }
+</style>
+
+
+<div class="text-center">
+    <h2 class="display-4">Here you go! The picture you requested! Enjoy :)</h2>
+    <br />
+
+    <h3> @Model.Title</h3>
+    
+    <div id="image_container">
+        <img src=@Model.HdUrl>
+    </div>
+
+    <br />
+    <p>And if you are even more curious and you want to know what are you in fact looking at, here's an explanation for ya:</p><br/>
+    <p>@Model.Explanation</p>
+
+</div>
+

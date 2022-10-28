@@ -1,0 +1,23 @@
+﻿@model APOD.Models.NasaApod
+
+@{
+    ViewData["title"] = "GetVideo";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Here you go! The picture you requested! Enjoy :)</h2>
+    <br />
+
+    <h3> @Model.Title</h3>
+
+    <div>
+        <iframe width="480" height="853" src=@Model.Url title=@Model.Title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+
+    <br />
+    <h3> And if you are even more curious and you want to know what are you in fact looking at, here's an explanation for ya:</h3>
+    <p>@Model.Explanation</p>
+
+</div>
+
+

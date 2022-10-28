@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p> Hello! If you came here it means you are a huge astronomy fan, and you would like to see 
+        today's  or any other day's astronomy photo or video, depending on your luck. 
+        So go on, enter the date you want to see a picture from! </p>
+
+    
+    @using (Html.BeginForm("Get", "Apod", FormMethod.Post))
+    {
+        <p>Insert a valid date in the following format: YYYY-MM-DD </p>
+        @Html.TextBox("date")
+        <input type="submit" value="Submit" />
+    }
+
+</div>
