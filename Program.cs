@@ -1,4 +1,3 @@
-using APOD.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

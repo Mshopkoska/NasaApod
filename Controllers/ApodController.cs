@@ -15,19 +15,19 @@ namespace APOD.Controllers
         [HttpPost]
         public IActionResult Get(string date)
         {
-            string endpoint = string.Empty;
-            bool isHD = false;
+            bool isHd = false;
 
             var data = Convert.ToDateTime(date);
-            endpoint = $"{this._apodEndpoint}?api_key={this._apiKey}&hd={isHD.ToString().ToLower()}&Date={data.ToString("yyyy-MM-dd")}";
-            using (var client = new HttpClient(new System.Net.Http.HttpClientHandler()))
+            string endpoint = $"{_apodEndpoint}?api_key={_apiKey}&hd={isHd.ToString().ToLower()}&date={data.ToString("yyyy-MM-dd")}";
+            using (var client = new HttpClient(new HttpClientHandler()))
             {
                 var result = client.GetAsync(endpoint);
 
                 var resultToObject = result.Result.Content.ReadAsStringAsync();
 
-                var deserialized = JsonConvert.DeserializeObject<NasaApod>(resultToObject.Result.ToString());
-                if (deserialized.MediaType.Equals("video"))
+                var deserialized = JsonConvert.DeserializeObject<NasaApod>(resultToObject.Result);
+
+                if (deserialized != null && deserialized.media_type == MediaType.Video)
                 {
                     return View("GetVideo", deserialized);
 

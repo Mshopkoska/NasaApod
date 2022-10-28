@@ -6,25 +6,28 @@
         public string Date { get; set; }
         public string Explanation { get; set; }
         public string HdUrl { get; set; }
-        public string MediaType { get; set; }
-        public string ServiceVersion { get; set; }
+        public MediaType media_type { get; set; }
+        public string service_version { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
         public byte[] Image { get; set; }
 
-        public NasaApod(){}
+        //public NasaApod(){}
 
-        public NasaApod(string copyright, string date, string explanation, string hdUrl, string mediaType, string serviceVersion, string title, string url, byte[] image)
+        public NasaApod(string copyright, string date, string explanation, string hdUrl, string media_type, string serviceVersion, string title, string url, byte[] image)
         {
             this.Copyright = copyright;
             this.Date = date;
             this.Explanation = explanation;
             this.HdUrl = hdUrl;
-            this.MediaType = mediaType;
-            this.ServiceVersion = serviceVersion;
+            this.media_type = media_type.Equals("Video") ? MediaType.Video : MediaType.image;
+            this.service_version = serviceVersion;
             this.Title = title;
             this.Url = url;
             this.Image = image;
+
+            
+            
         }
     }
 }
